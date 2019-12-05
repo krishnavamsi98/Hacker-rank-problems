@@ -1,0 +1,63 @@
+Problem Statement 
+Divisible Sum Pairs
+You are given an array of n integers, and k ,a positive integer. Find and print the
+number of  pairs (i,j) where a[i] + a[j] is divisible by k.
+
+Input Format
+
+The first line contains  space-separated integers,  and , respectively. 
+The second line contains  space-separated integers describing the respective values of .
+Constraints
+2<=n<=100
+1<=k<=100
+ 1<=ai<=100
+
+Output Format
+Print the number of (i,j) pairs where a[i] + a[j]  is evenly divisible by  k.
+
+Sample Input
+6 3
+1 3 2 6 1 2
+
+Sample Output
+ 5
+
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the divisibleSumPairs function below.
+def divisibleSumPairs(n, k, ar):
+    c=0
+    dup=[]
+    for i in range(len(ar)):
+        for j in range(len(ar)):
+            if((ar[i]+ar[j])%k==0 and [i,j] not in dup and i!=j and i<j):
+
+                c+=1
+                dup.append([i,j])
+                dup.append([j,i])
+    return  c
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = divisibleSumPairs(n, k, ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
