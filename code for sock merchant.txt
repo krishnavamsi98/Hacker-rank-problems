@@ -1,0 +1,12 @@
+code:
+from collections import Counter
+n=int(input())
+s=input()
+v=''
+while(len(v)<=n):
+    v+=s
+v=v[:n]
+
+for i,j in Counter(v).items():
+    if(i=='a'):
+        print(j)
